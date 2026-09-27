@@ -229,7 +229,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.markzhang.GitHubHosts;
 				PRODUCT_NAME = GitHubHosts;
 				SDKROOT = macosx;
@@ -253,7 +253,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.markzhang.GitHubHosts;
 				PRODUCT_NAME = GitHubHosts;
 				SDKROOT = macosx;
