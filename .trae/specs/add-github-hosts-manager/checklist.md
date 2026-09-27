@@ -1,0 +1,21 @@
+# Checklist
+
+- [x] XcodeGen `project.yml` 存在，`xcodegen generate` 可生成 `GitHubHosts.xcodeproj`
+- [x] `xcodebuild -scheme GitHubHosts build` 编译通过，无错误
+- [x] App 部署目标为 macOS 13.0+，App Sandbox 已关闭
+- [x] 能从 `https://raw.hellogithub.com/hosts` 成功拉取并在预览区展示内容
+- [x] 拉取失败/内容无效时给出可读错误，且不破坏已有缓存
+- [x] 预览区以等宽字体展示内容，并显示来源 URL 与更新时间
+- [x] 合并逻辑为纯函数且有单元测试覆盖（首插、替换、多处残留、空文件、末尾无换行）
+- [x] `xcodebuild test` 全部单元测试通过
+- [x] 首次应用会将标记区块追加到 `/etc/hosts`，原有内容不变
+- [x] 重复应用后 `/etc/hosts` 中 GitHub520 区块数量恒为 1，无重复
+- [x] 写入后自动刷新 DNS，且写入与刷新共用一次系统授权弹窗
+- [x] 用户取消授权时 `/etc/hosts` 未被修改，界面提示「已取消」
+- [x] 菜单栏图标常驻，含打开主窗口、立即更新并应用、仅刷新 DNS、退出
+- [x] 关闭主窗口后应用不退出，菜单栏仍可操作
+- [x] 主窗口能正确显示「未写入 / 已是最新 / 有更新」状态
+- [x] 重启应用后能从缓存恢复内容与更新时间
+- [x] `build.sh` 成功产出 `GitHubHosts.app`
+- [x] `README.md` 含构建、运行、Gatekeeper 信任与 `xattr -cr` 步骤
+- [x] `AGENTS.md` 已记录工程规则、构建/测试命令与已完成项
