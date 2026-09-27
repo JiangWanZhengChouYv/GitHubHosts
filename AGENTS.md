@@ -25,6 +25,7 @@ GitHubHosts/
 ├── AGENTS.md                         # 本文件
 ├── GitHubHosts/
 │   ├── GitHubHostsApp.swift          # App 入口、Scene 与菜单栏
+│   ├── Assets.xcassets/              # App 图标（AppIcon.appiconset，含 16~512 + @2x）
 │   ├── Views/
 │   │   ├── ContentView.swift         # 主窗口界面
 │   │   └── MenuBarView.swift         # 菜单栏菜单
@@ -94,3 +95,4 @@ ALL_PROXY=http://127.0.0.1:7890 gh release create v<版本> --repo JiangWanZheng
 - [x] 实现主窗口 ContentView 与菜单栏 MenuBarView
 - [x] 构建脚本 build.sh 与 README（含 xattr 信任步骤）
 - [x] 发布 v1.0.0（GitHub Release：`GitHubHosts-1.0.0.dmg` / `GitHubHosts-1.0.0.zip`）
+- [x] 发布 v1.0.1（新增 App 图标：闪电 + 网络节点，macOS 圆角方形 + 投影）
