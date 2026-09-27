@@ -52,6 +52,26 @@ GitHubHosts/
 xcodebuild -project GitHubHosts.xcodeproj -scheme GitHubHosts -destination 'platform=macOS' test
 ```
 
+## 打包与发布
+
+```bash
+# 1. 修改 project.yml 的 MARKETING_VERSION 与 CFBundleShortVersionString
+# 2. 干净构建
+rm -rf build dist GitHubHosts.xcodeproj && ./build.sh
+
+# 3. 打包分发件（zip + dmg）
+ditto -c -k --sequesterRsrc --keepParent dist/GitHubHosts.app dist/GitHubHosts-<版本>.zip
+rm -rf /tmp/dmgroot && mkdir -p /tmp/dmgroot && cp -R dist/GitHubHosts.app /tmp/dmgroot/ \
+  && ln -s /Applications /tmp/dmgroot/Applications \
+  && hdiutil create -volname "GitHubHosts <版本>" -srcfolder /tmp/dmgroot -ov -format UDZO dist/GitHubHosts-<版本>.dmg
+
+# 4. 发布 Release（国内网络需带代理）
+ALL_PROXY=http://127.0.0.1:7890 gh release create v<版本> --repo JiangWanZhengChouYv/GitHubHosts \
+  --title "v<版本>" --notes "..." dist/GitHubHosts-<版本>.zip dist/GitHubHosts-<版本>.dmg
+```
+
+用户侧安装：拖入「应用程序」后按需执行 `xattr -cr /Applications/GitHubHosts.app` 去除隔离属性。
+
 ## 开发约定
 
 - **不要手动修改 `GitHubHosts.xcodeproj`**。它是生成物，所有工程配置都应改在 `project.yml`，
@@ -73,3 +93,4 @@ xcodebuild -project GitHubHosts.xcodeproj -scheme GitHubHosts -destination 'plat
 - [x] 实现状态编排 HostsStore
 - [x] 实现主窗口 ContentView 与菜单栏 MenuBarView
 - [x] 构建脚本 build.sh 与 README（含 xattr 信任步骤）
+- [x] 发布 v1.0.0（GitHub Release：`GitHubHosts-1.0.0.dmg` / `GitHubHosts-1.0.0.zip`）
