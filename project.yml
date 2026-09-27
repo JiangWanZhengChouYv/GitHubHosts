@@ -24,20 +24,22 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: com.markzhang.GitHubHosts
         SWIFT_VERSION: "5.0"
         ENABLE_APP_SANDBOX: NO
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         CODE_SIGN_IDENTITY: "-"
         CODE_SIGN_STYLE: Manual
         ENABLE_HARDENED_RUNTIME: NO
-        MARKETING_VERSION: "1.0.0"
+        MARKETING_VERSION: "1.0.1"
         CURRENT_PROJECT_VERSION: "1"
     info:
       path: GitHubHosts/Info.plist
       properties:
         CFBundleName: GitHubHosts
         CFBundleDisplayName: GitHubHosts
-        CFBundleShortVersionString: "1.0.0"
+        CFBundleShortVersionString: "1.0.1"
         CFBundleVersion: "1"
         LSMinimumSystemVersion: "13.0"
         LSApplicationCategoryType: public.app-category.utilities
+        CFBundleIconName: AppIcon
         NSAppleEventsUsageDescription: "需要以管理员权限写入 /etc/hosts 并刷新 DNS 缓存。应用会请求一次授权，用于把 GitHub520 hosts 记录写入系统 hosts 文件并执行 killall -HUP mDNSResponder。"
 
   GitHubHostsTests:
