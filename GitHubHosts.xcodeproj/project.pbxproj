@@ -11,6 +11,7 @@
 		51A734EB4F3EC62BE4C1ACE1 /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FA59D1CD41A68F2B606967 /* MenuBarView.swift */; };
 		8C9003C2B5B710FD7461EB03 /* HostsFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE32A5BB37797712D29EC9E /* HostsFileManager.swift */; };
 		8C958B90C0F35E0F6ACA22F3 /* HostsFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D2DD6FF80819D7047A4F70 /* HostsFetcher.swift */; };
+		B9BA27D2519DAC491538F675 /* HostsApplyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD6921C37B82A73DCEEF6CE /* HostsApplyTests.swift */; };
 		DBF5EF2386095277B654B379 /* GitHubHostsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20B9136C76A3B3783767C35 /* GitHubHostsApp.swift */; };
 		E0ECADDF61706B2F3B96BEEA /* HostsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A94AE1D0546F3A0A61A86C5 /* HostsStore.swift */; };
 		E3B13AA7CD5FA2486FE91270 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A70D20562F0CC4F7ADE2512C /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 		83FA59D1CD41A68F2B606967 /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
 		A4D2DD6FF80819D7047A4F70 /* HostsFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostsFetcher.swift; sourceTree = "<group>"; };
 		A70D20562F0CC4F7ADE2512C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BDD6921C37B82A73DCEEF6CE /* HostsApplyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostsApplyTests.swift; sourceTree = "<group>"; };
 		C20B9136C76A3B3783767C35 /* GitHubHostsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubHostsApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -56,6 +58,7 @@
 		7C55B6B2BD14B286B889DC38 /* GitHubHostsTests */ = {
 			isa = PBXGroup;
 			children = (
+				BDD6921C37B82A73DCEEF6CE /* HostsApplyTests.swift */,
 				14D29D870BFBC66192198883 /* HostsMergeTests.swift */,
 			);
 			path = GitHubHostsTests;
@@ -213,6 +216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9BA27D2519DAC491538F675 /* HostsApplyTests.swift in Sources */,
 				EBCEBF90EE95BF3AF69D3C53 /* HostsMergeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -244,7 +248,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.markzhang.GitHubHosts;
 				PRODUCT_NAME = GitHubHosts;
 				SDKROOT = macosx;
@@ -268,7 +272,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.markzhang.GitHubHosts;
 				PRODUCT_NAME = GitHubHosts;
 				SDKROOT = macosx;

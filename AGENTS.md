@@ -81,6 +81,14 @@ ALL_PROXY=http://127.0.0.1:7890 gh release create v<版本> --repo JiangWanZheng
   任何地方（写入、解析、检测）都不得改动其文本。
 - **`HostsMerge` 的合并逻辑必须保持幂等**：重复应用只会替换旧区块，
   文件中 GitHub520 区块的数量恒为 1，不产生重复行，且不影响其他原有内容。
+- **禁止把远端内容整体写入 `/etc/hosts`**：`PrivilegedExecutor.applyHosts(block:)` 必须先用
+  `HostsMerge.merge` 把区块合并进**当前系统 hosts**，再把「合并后的完整文件」写回去；
+  只允许替换 `# GitHub520 Host Start` ~ `# GitHub520 Host End` 之间的内容。
+  任何绕过合并、直接写入远端内容的改动都会**整体覆盖 `/etc/hosts`，清空用户原有记录**
+  （v1.0.1 曾因此丢数据，见 `GitHubHostsTests/HostsApplyTests.swift` 回归测试）。
+- **验证必须走 App 真实代码路径**：验证写入行为时要调用 `HostsStore` / `PrivilegedExecutor` 的
+  真实入口，不要自己复刻一遍「读取 → 合并 → 写入」的流程——那样测的是臆想中的流程，
+  会漏掉接线 Bug（v1.0.1 就是这么漏掉「从未调用 merge」的）。
 - **提权统一走 AppleScript**：禁止使用其他提权方式（如 `SMJobBless` 特权助手）。
 - **写入 + 刷新 DNS 必须合并为一次授权**：写入 `/etc/hosts` 与 `killall -HUP mDNSResponder`
   应在同一个 `do shell script` 中完成，用户只需授权一次。
@@ -96,3 +104,5 @@ ALL_PROXY=http://127.0.0.1:7890 gh release create v<版本> --repo JiangWanZheng
 - [x] 构建脚本 build.sh 与 README（含 xattr 信任步骤）
 - [x] 发布 v1.0.0（GitHub Release：`GitHubHosts-1.0.0.dmg` / `GitHubHosts-1.0.0.zip`）
 - [x] 发布 v1.0.1（新增 App 图标：闪电 + 网络节点，macOS 圆角方形 + 投影）
+- [x] 修复 v1.0.1 数据丢失 Bug：`applyHosts` 未合并、整体覆盖 `/etc/hosts`
+      （改为 `applyHosts(block:)` 内部合并；新增 `HostsApplyTests` 6 个回归测试）

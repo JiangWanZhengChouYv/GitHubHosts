@@ -128,9 +128,16 @@ final class HostsFileManager {
 
     static let systemHostsPath = "/etc/hosts"
 
-    /// 读取系统 hosts 文件内容；失败返回 nil。
+    /// 目标 hosts 文件路径。默认是系统路径，测试时可注入临时文件。
+    let hostsPath: String
+
+    init(hostsPath: String = HostsFileManager.systemHostsPath) {
+        self.hostsPath = hostsPath
+    }
+
+    /// 读取 hosts 文件内容；失败返回 nil。
     func readSystemHosts() -> String? {
-        try? String(contentsOfFile: Self.systemHostsPath, encoding: .utf8)
+        try? String(contentsOfFile: hostsPath, encoding: .utf8)
     }
 
     /// `/etc/hosts` 中已有的 GitHub520 区块是否与 `latest` 一致。

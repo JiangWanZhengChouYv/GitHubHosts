@@ -62,7 +62,7 @@ final class HostsStore: ObservableObject {
         defer { isBusy = false }
 
         do {
-            try await executor.applyHosts(content: remoteContent, refreshDNS: true)
+            try await executor.applyHosts(block: remoteContent, refreshDNS: true)
             statusMessage = "已应用并刷新 DNS"
             errorMessage = nil
             refreshStatus()
